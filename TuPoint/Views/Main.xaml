@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TuPoint.Views.Main">
+    <ContentPage.Content>
+        <StackLayout Spacing="10" Padding="20">
+            <!-- Imagen principal -->
+            <Image Source="https://tupoint.com/images/sin_fondo.png" 
+               Aspect="AspectFit" 
+               WidthRequest="200" 
+               HeightRequest="200"/>
+
+            <!-- Bienvenida -->
+            <Label Text="¡Bienvenido a Tu Point!" 
+               HorizontalOptions="CenterAndExpand" 
+               FontSize="20" 
+               FontAttributes="Bold"/>
+
+            <!-- Información del usuario -->
+            <StackLayout>
+                <Label Text="Usuario: username"/>
+                <Label Text="Saldo: S/. 0"/>
+            </StackLayout>
+
+            <!-- Mensaje de bienvenida -->
+            <Label Text="Gana TuPoints Reciclando" FontSize="16" FontAttributes="Bold" TextColor="Orange"/>
+
+            <!-- Botón de acción principal -->
+            <Button Text="Gana points reciclando" BackgroundColor="Green" TextColor="White" Margin="0,10,0,0"/>
+
+            <!-- Colección de elementos -->
+            <CollectionView ItemsSource="{Binding TuColeccion}" BackgroundColor="Orange">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="White" CornerRadius="10" Margin="0,10,0,0">
+                            <StackLayout Spacing="5">
+                                <!-- Imagen -->
+                                <Image Source="{Binding ImagenUrl}" 
+                                   Aspect="AspectFill" 
+                                   HeightRequest="100"/>
+
+                                <!-- Textos -->
+                                <StackLayout Padding="10" BackgroundColor="White" Spacing="2">
+                                    <Label Text="{Binding Texto1}" FontSize="16" TextColor="Black"/>
+                                    <Label Text="{Binding Texto2}" FontSize="14" TextColor="Gray"/>
+                                    <Label Text="{Binding Texto3}" FontSize="14" TextColor="Gray"/>
+                                </StackLayout>
+
+                                <!-- Botones -->
+                                <StackLayout Orientation="Horizontal" Padding="10" Spacing="10">
+                                    <Button Text="Botón 1" BackgroundColor="Green" TextColor="White"/>
+                                    <Button Text="Botón 2" BackgroundColor="Green" TextColor="White"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
