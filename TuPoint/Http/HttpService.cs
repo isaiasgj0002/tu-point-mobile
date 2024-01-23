@@ -67,7 +67,7 @@ namespace TuPoint.Http
                     else
                     {
                         // Manejar el caso de respuesta no exitosa
-                        return "Error en la solicitud HTTP";
+                        return "error";
                     }
                 }
             }

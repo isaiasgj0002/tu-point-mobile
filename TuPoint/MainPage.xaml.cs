@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TuPoint.Http;
+using TuPoint.Views;
 using Xamarin.Forms;
 
 namespace TuPoint
@@ -25,9 +26,23 @@ namespace TuPoint
             string password = PasswordEntry.Text;
 
             // TODO: Validar credenciales y realizar la acción correspondiente
-            if (email.Length > 0 && password.Length > 0)
+            try
             {
-                string result = await _httpService.LoginAsync(email, password);
+                if (email.Length > 0 && password.Length > 0)
+                {
+                    string result = await _httpService.LoginAsync(email, password);
+                    if (result != "error" && result != "{\"error\":\"Usuario no encontrado\"}")
+                    {
+                        await Navigation.PushAsync(new Main());
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", result, "Ok");
+                    }
+                }
+            }catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "Ok");    
             }
 
         }
