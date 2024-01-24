@@ -29,21 +29,21 @@
             <Button Text="Gana points reciclando" BackgroundColor="Green" TextColor="White" Margin="0,10,0,0"/>
 
             <!-- Colección de elementos -->
-            <CollectionView ItemsSource="{Binding TuColeccion}" BackgroundColor="Orange">
+            <CollectionView ItemsSource="{Binding empresas}" BackgroundColor="Orange">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="White" CornerRadius="10" Margin="0,10,0,0">
                             <StackLayout Spacing="5">
                                 <!-- Imagen -->
-                                <Image Source="{Binding ImagenUrl}" 
+                                <Image Source="{Binding foto}" 
                                    Aspect="AspectFill" 
                                    HeightRequest="100"/>
 
                                 <!-- Textos -->
                                 <StackLayout Padding="10" BackgroundColor="White" Spacing="2">
-                                    <Label Text="{Binding Texto1}" FontSize="16" TextColor="Black"/>
-                                    <Label Text="{Binding Texto2}" FontSize="14" TextColor="Gray"/>
-                                    <Label Text="{Binding Texto3}" FontSize="14" TextColor="Gray"/>
+                                    <Label Text="{Binding nombre_emp}" FontSize="16" TextColor="Black"/>
+                                    <Label Text="{Binding descripcion}" FontSize="14" TextColor="Gray"/>
+                                    <Label Text="{Binding direccion}" FontSize="14" TextColor="Gray"/>
                                 </StackLayout>
 
                                 <!-- Botones -->

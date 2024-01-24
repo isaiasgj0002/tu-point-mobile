@@ -4,6 +4,17 @@
              x:Class="TuPoint.MainPage">
 
     <StackLayout VerticalOptions="CenterAndExpand" Padding="15">
+        <!-- Imagen principal -->
+        <Image Source="https://tupoint.com/images/sin_fondo.png" 
+           Aspect="AspectFit" 
+           WidthRequest="200" 
+           HeightRequest="200"/>
+
+                <!-- Bienvenida -->
+                <Label Text="¡Bienvenido a Tu Point!" 
+           HorizontalOptions="CenterAndExpand" 
+           FontSize="20" 
+           FontAttributes="Bold"/>
         <Entry Placeholder="Correo electrónico" Keyboard="Email" x:Name="EmailEntry"/>
         <Entry Placeholder="Contraseña" IsPassword="True" x:Name="PasswordEntry"/>
 

@@ -1,9 +1,13 @@
 ﻿using Android.OS;
+using Newtonsoft.Json;
+using Org.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TuPoint.Http;
+using TuPoint.Models;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,11 +17,13 @@ namespace TuPoint.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Main : ContentPage
     {
+        private readonly HttpService _httpService;
         public Main()
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
             ObtenerUbicacionActual();
+            _httpService = new HttpService();
         }
 
         async void ObtenerUbicacionActual()
@@ -33,6 +39,17 @@ namespace TuPoint.Views
 
                     // Ahora puedes usar latitud y longitud según tus necesidades
                     Console.WriteLine($"Ubicación actual: {latitud}, {longitud}");
+
+                    string result = await _httpService.GetCompanies(latitud.ToString(), longitud.ToString());
+                    if(!string.IsNullOrEmpty(result))
+                    {
+                        // Deserializamos la cadena JSON a una lista de objetos
+                        List<Company> empresas = JsonConvert.DeserializeObject<List<Company>>(result);
+                    }
+                    else
+                    {
+                        List<Company> empresas = new List<Company>();
+                    }
                 }
             }
             catch (FeatureNotSupportedException)
