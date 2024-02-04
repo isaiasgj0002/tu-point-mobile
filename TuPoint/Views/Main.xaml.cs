@@ -96,5 +96,10 @@ namespace TuPoint.Views
             // Evita que el usuario retroceda con el botón atrás
             return true;
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ListaElementos());
+        }
     }
 }

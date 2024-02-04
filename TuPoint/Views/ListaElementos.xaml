@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TuPoint.Views.ListaElementos">
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Tu ListView -->
+            <ListView x:Name="miListView">
+
+                <!-- Definición de la plantilla de cada elemento en el ListView -->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <!-- Contenido de cada elemento -->
+                            <StackLayout Orientation="Horizontal">
+
+                                <!-- Etiqueta para mostrar texto -->
+                                <Label Text="{Binding Nombre}" VerticalOptions="Center" />
+
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
