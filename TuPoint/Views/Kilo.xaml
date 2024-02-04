@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TuPoint.Views.Kilo">
+    <ContentPage.Content>
+        <StackLayout Padding="15">
+            <!-- Campo de texto para kilos comprobados -->
+            <Entry Placeholder="Ingrese kilos" Keyboard="Numeric" x:Name="txtKilos"/>
+
+            <!-- Botón para cargar imagen -->
+            <Button Text="Cargar Imagen"
+                BackgroundColor="#3498db"
+                TextColor="White"
+                Clicked="CargarImagen_Clicked" />
+
+            <!-- Botón para registrar kilos -->
+            <Button Text="Registrar Kilos"
+                BackgroundColor="#e67e22"
+                TextColor="White"
+                Clicked="RegistrarKilos_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
