@@ -18,8 +18,8 @@
 
             <!-- Información del usuario -->
             <StackLayout>
-                <Label Text="Usuario: username"/>
-                <Label Text="Saldo: S/. 0"/>
+                <Label Text="Usuario: username" x:Name="username"/>
+                <Label Text="Saldo: S/. 0" x:Name="saldo"/>
             </StackLayout>
 
             <!-- Mensaje de bienvenida -->

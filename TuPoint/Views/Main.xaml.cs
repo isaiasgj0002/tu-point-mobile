@@ -23,6 +23,7 @@ namespace TuPoint.Views
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
             ObtenerUbicacionActual();
+            LoadData();
             _httpService = new HttpService();
         }
 
@@ -88,6 +89,17 @@ namespace TuPoint.Views
             {
                 // Manejar errores
                 Console.WriteLine($"Error al solicitar el permiso: {ex.Message}");
+            }
+        }
+
+        private async void LoadData()
+        {
+            User user = await App.SQLiteDb.GetFirstUserAsync();
+            Console.WriteLine(user);
+            if (user != null)
+            {
+                username.Text = "Usuario: "+user.nombre_apellido.ToString();
+                saldo.Text = "Saldo: S/."+user.monedas_tupoint.ToString();
             }
         }
 
