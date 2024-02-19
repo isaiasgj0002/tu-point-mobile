@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TuPoint.Http;
 using TuPoint.Models;
 using Xamarin.Essentials;
@@ -18,6 +19,7 @@ namespace TuPoint.Views
     public partial class Main : ContentPage
     {
         private readonly HttpService _httpService;
+        public ICommand CallCommand { get; set; }
         public Main()
         {
             InitializeComponent();
@@ -25,6 +27,8 @@ namespace TuPoint.Views
             ObtenerUbicacionActual();
             LoadData();
             _httpService = new HttpService();
+            CallCommand = new Command<string>(OnCallCommandExecute);
+            BindingContext = this;
         }
 
         async void ObtenerUbicacionActual()
@@ -100,6 +104,25 @@ namespace TuPoint.Views
             {
                 username.Text = "Usuario: "+user.nombre_apellido.ToString();
                 saldo.Text = "Saldo: S/."+user.monedas_tupoint.ToString();
+            }
+        }
+
+        private void OnCallCommandExecute(string phoneNumber)
+        {
+            try
+            {
+                // Llama al marcador telefónico con el número proporcionado
+                PhoneDialer.Open(phoneNumber);
+            }
+            catch (FeatureNotSupportedException ex)
+            {
+                // Funcionalidad no soportada en este dispositivo
+                DisplayAlert("Error", "La llamada telefónica no es compatible en este dispositivo.", "OK");
+            }
+            catch (Exception ex)
+            {
+                // Ocurrió un error inesperado
+                DisplayAlert("Error", "Ocurrió un error al intentar realizar la llamada.", "OK");
             }
         }
 

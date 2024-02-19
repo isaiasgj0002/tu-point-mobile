@@ -48,8 +48,10 @@
 
                                 <!-- Botones -->
                                 <StackLayout Orientation="Horizontal" Padding="10" Spacing="10">
-                                    <Button Text="Botón 1" BackgroundColor="Green" TextColor="White"/>
-                                    <Button Text="Botón 2" BackgroundColor="Green" TextColor="White"/>
+                                    <Button Text="Llamar" BackgroundColor="Green" TextColor="White"
+                                            Command="{Binding Source={x:Reference Name=collectionView}, Path=BindingContext.CallCommand}"
+                                            CommandParameter="{Binding telefono}"/>
+                                    <Button Text="Usar Descuento" BackgroundColor="Green" TextColor="White"/>
                                 </StackLayout>
                             </StackLayout>
                         </Frame>
