@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <!-- Tu ListView -->
-            <ListView x:Name="miListView">
+            <ListView x:Name="miListView" ItemTapped="OnItemTapped">
 
                 <!-- Definición de la plantilla de cada elemento en el ListView -->
                 <ListView.ItemTemplate>

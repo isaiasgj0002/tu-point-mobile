@@ -33,11 +33,27 @@ namespace TuPoint.Views
                 new ElementoModelo { Id = 13, Nombre = "Madera" },
                 new ElementoModelo { Id = 14, Nombre = "Libros" },
                 new ElementoModelo { Id = 15, Nombre = "Elementos peligrosos" },
-                new ElementoModelo { Id = 4, Nombre = "Tetrapack" },
-                new ElementoModelo { Id = 4, Nombre = "Juguetes" }
+                new ElementoModelo { Id = 16, Nombre = "Tetrapack" },
+                new ElementoModelo { Id = 17, Nombre = "Juguetes" }
             };
             // Asignar la lista al ItemSource del ListView
             miListView.ItemsSource = listaElementos;
+
+        }
+
+        private void OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item is ElementoModelo selectedItem)
+            {
+                // Acceder al modelo de datos del elemento seleccionado y pasar el parámetro a la nueva vista
+                string elementoSeleccionado = selectedItem.Id.ToString();
+
+                // Abrir la nueva vista y pasar el parámetro
+                Navigation.PushAsync(new Kilo(elementoSeleccionado));
+
+                // Desmarcar la selección en el ListView
+                miListView.SelectedItem = null;
+            }
         }
     }
 }

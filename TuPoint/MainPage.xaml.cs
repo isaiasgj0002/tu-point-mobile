@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using TuPoint.Http;
 using TuPoint.Models;
 using TuPoint.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace TuPoint
@@ -65,8 +66,14 @@ namespace TuPoint
 
         private void OnRegisterButtonClicked(object sender, EventArgs e)
         {
-            // Implementa la lógica de registro aquí
-            // Puedes navegar a la página de registro u otra acción según tus necesidades
+            try
+            {
+                Launcher.OpenAsync(new Uri("https://tupoint.com/registro.php"));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al abrir el enlace: {ex.Message}");
+            }
         }
 
         private async void LoadData()
